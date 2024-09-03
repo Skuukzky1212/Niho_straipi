@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "infomation_categories",
+  "info": {
+    "singularName": "infomation-category",
+    "pluralName": "infomation-categories",
+    "displayName": "Information category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "informationcat": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::infomation.infomation",
+      "mappedBy": "information_categories"
+    }
+  }
+}

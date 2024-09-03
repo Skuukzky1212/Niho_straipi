@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "infomations",
+  "info": {
+    "singularName": "infomation",
+    "pluralName": "infomations",
+    "displayName": "information",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "thumb": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {}
+    },
+    "content": {
+      "pluginOptions": {},
+      "type": "blocks"
+    },
+    "information_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::infomation-category.infomation-category",
+      "inversedBy": "informationcat"
+    }
+  }
+}
