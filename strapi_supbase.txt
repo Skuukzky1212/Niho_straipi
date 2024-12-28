@@ -1,0 +1,33 @@
+Project URL: https://mojdygqgdlyfnfxbjcah.supabase.co
+API Key: 
+
+host:
+db.mojdygqgdlyfnfxbjcah.supabase.co
+
+port:
+5432
+
+database:
+postgres
+
+user:
+postgres
+
+pwd nihon12345@12345
+
+export from local 
+pg_dump -U postgres -h localhost -p 5432 -d postgres > "C:\dump\local_nihon_database.sql"
+
+
+import to supabase
+>psql -U postgres.mojdygqgdlyfnfxbjcah -h aws-0-ap-southeast-1.pooler.supabase.com -p 6543 -d postgres -f "C:\dump\local_nihon_database.sql"
+
+Replace database image url 
+UPDATE infomations
+SET content = REPLACE(content::text, 'http://localhost:1337/uploads/', 'https://mojdygqgdlyfnfxbjcah.supabase.co/storage/v1/object/public/supabase/files/')::json
+WHERE content::text LIKE '%http://localhost:1337/uploads/%';
+
+
+UPDATE files
+SET url = REPLACE(url::text, '/uploads/', 'https://mojdygqgdlyfnfxbjcah.supabase.co/storage/v1/object/public/supabase/files/')
+WHERE url::text LIKE '%/uploads/%';
