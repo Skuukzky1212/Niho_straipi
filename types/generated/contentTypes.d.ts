@@ -362,81 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiInfomationInfomation extends Schema.CollectionType {
-  collectionName: 'infomations';
-  info: {
-    singularName: 'infomation';
-    pluralName: 'infomations';
-    displayName: 'information';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    thumb: Attribute.Media<'images'>;
-    content: Attribute.Blocks;
-    information_categories: Attribute.Relation<
-      'api::infomation.infomation',
-      'manyToMany',
-      'api::infomation-category.infomation-category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::infomation.infomation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::infomation.infomation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiInfomationCategoryInfomationCategory
-  extends Schema.CollectionType {
-  collectionName: 'infomation_categories';
-  info: {
-    singularName: 'infomation-category';
-    pluralName: 'infomation-categories';
-    displayName: 'Information category';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String;
-    slug: Attribute.UID & Attribute.Required;
-    informationcat: Attribute.Relation<
-      'api::infomation-category.infomation-category',
-      'manyToMany',
-      'api::infomation.infomation'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::infomation-category.infomation-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::infomation-category.infomation-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -863,6 +788,81 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiInfomationInfomation extends Schema.CollectionType {
+  collectionName: 'infomations';
+  info: {
+    singularName: 'infomation';
+    pluralName: 'infomations';
+    displayName: 'information';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    thumb: Attribute.Media<'images'>;
+    content: Attribute.Blocks;
+    information_categories: Attribute.Relation<
+      'api::infomation.infomation',
+      'manyToMany',
+      'api::infomation-category.infomation-category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::infomation.infomation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::infomation.infomation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInfomationCategoryInfomationCategory
+  extends Schema.CollectionType {
+  collectionName: 'infomation_categories';
+  info: {
+    singularName: 'infomation-category';
+    pluralName: 'infomation-categories';
+    displayName: 'Information category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.UID & Attribute.Required;
+    informationcat: Attribute.Relation<
+      'api::infomation-category.infomation-category',
+      'manyToMany',
+      'api::infomation.infomation'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::infomation-category.infomation-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::infomation-category.infomation-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -873,8 +873,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::infomation.infomation': ApiInfomationInfomation;
-      'api::infomation-category.infomation-category': ApiInfomationCategoryInfomationCategory;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -883,6 +881,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::infomation.infomation': ApiInfomationInfomation;
+      'api::infomation-category.infomation-category': ApiInfomationCategoryInfomationCategory;
     }
   }
 }

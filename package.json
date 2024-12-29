@@ -11,7 +11,6 @@
     "deploy": "strapi deploy"
   },
   "dependencies": {
-    "@sklinet/strapi-plugin-tinymce": "^1.0.9",
     "@strapi/plugin-cloud": "4.25.8",
     "@strapi/plugin-i18n": "4.25.8",
     "@strapi/plugin-users-permissions": "4.25.8",

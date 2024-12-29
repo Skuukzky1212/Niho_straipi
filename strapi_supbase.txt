@@ -32,6 +32,10 @@ UPDATE files
 SET url = REPLACE(url::text, '/uploads/', 'https://mojdygqgdlyfnfxbjcah.supabase.co/storage/v1/object/public/supabase/files/')
 WHERE url::text LIKE '%/uploads/%';
 
+UPDATE files
+SET provider = REPLACE(provider::text, 'local', 'strapi-provider-upload-supabase')
+WHERE provider::text LIKE '%local%';
+
 
 deploy 
 https://niho-strapi.onrender.com/admin
