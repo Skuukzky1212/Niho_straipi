@@ -1,48 +1,35 @@
-module.exports = [
-  "strapi::logger",
-  "strapi::errors",
+export default ({ env }) => [
+  'strapi::errors',
   {
-    name: "strapi::security",
+    name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "script-src": ["'self'", "*.tinymce.com", "*.tiny.cloud", "https:"],
-          "connect-src": [
+          'connect-src': ["'self'", 'https:', 'http:'],
+          'img-src': [
             "'self'",
-            "*.tinymce.com",
-            "*.tiny.cloud",
-            "blob:",
-            "*.strapi.io",
+            'data:',
+            'blob:',
+            'res.cloudinary.com', // cloudinary images
+            'lh3.googleusercontent.com', // google avatars
+            'platform-lookaside.fbsbx.com', // facebook avatars
+            'dl.airtable.com', // strapi marketplace,
+            "market-assets.strapi.io",
+            env('SUPABASE_API_URL'),
           ],
-          "img-src": [
-            "'self'",
-            "*.tinymce.com",
-            "*.tiny.cloud",
-            "data:",
-            "blob:",
-            "dl.airtable.com",
-            "strapi.io",
-            "s3.amazonaws.com",
-            "cdn.jsdelivr.net",
-          ],
-          "style-src": [
-            "'self'",
-            "'unsafe-inline'",
-            "*.tinymce.com",
-            "*.tiny.cloud",
-          ],
-          "font-src": ["'self'", "*.tinymce.com", "*.tiny.cloud"],
+          'media-src': ["'self'", 'data:', 'blob:', env('SUPABASE_API_URL')],
+          upgradeInsecureRequests: null,
         },
-        upgradeInsecureRequests: null,
       },
     },
   },
-  "strapi::cors",
-  "strapi::poweredBy",
-  "strapi::query",
-  "strapi::body",
-  "strapi::session",
-  "strapi::favicon",
-  "strapi::public",
+  'strapi::cors',
+  'strapi::poweredBy',
+  'strapi::logger',
+  'strapi::query',
+  'strapi::body',
+  'strapi::session',
+  'strapi::favicon',
+  'strapi::public',
 ];

@@ -31,3 +31,9 @@ WHERE content::text LIKE '%http://localhost:1337/uploads/%';
 UPDATE files
 SET url = REPLACE(url::text, '/uploads/', 'https://mojdygqgdlyfnfxbjcah.supabase.co/storage/v1/object/public/supabase/files/')
 WHERE url::text LIKE '%/uploads/%';
+
+
+deploy 
+https://niho-strapi.onrender.com/admin
+email: vuongnguyen30702@gmail.com
+pwd: Nihon335
