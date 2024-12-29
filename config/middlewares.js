@@ -1,4 +1,4 @@
-export default ({ env }) => [
+module.exports = ({ env }) => [
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -15,7 +15,7 @@ export default ({ env }) => [
             'lh3.googleusercontent.com', // google avatars
             'platform-lookaside.fbsbx.com', // facebook avatars
             'dl.airtable.com', // strapi marketplace,
-            "market-assets.strapi.io",
+            'market-assets.strapi.io',
             env('SUPABASE_API_URL'),
           ],
           'media-src': ["'self'", 'data:', 'blob:', env('SUPABASE_API_URL')],
